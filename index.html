@@ -1,195 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - Yaoji (Obsidian Daily Todo Sync)</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.7;
-      color: #333;
-      background: #fafafa;
-      padding: 2rem 1rem;
-    }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 2.5rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 0.3rem;
-      color: #1a1a1a;
-    }
-    .effective-date {
-      color: #888;
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      font-size: 1.15rem;
-      margin-top: 2rem;
-      margin-bottom: 0.6rem;
-      color: #1a1a1a;
-    }
-    h3 {
-      font-size: 1rem;
-      margin-top: 1.2rem;
-      margin-bottom: 0.4rem;
-      color: #444;
-    }
-    p {
-      margin-bottom: 0.8rem;
-    }
-    ol, ul {
-      margin-bottom: 0.8rem;
-      padding-left: 1.5rem;
-    }
-    li {
-      margin-bottom: 0.4rem;
-    }
-    .service-item {
-      margin-bottom: 1rem;
-      padding-left: 0.5rem;
-    }
-    .service-name {
-      font-weight: 600;
-    }
-    .service-detail {
-      color: #555;
-      font-size: 0.95rem;
-    }
-    footer {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #eee;
-      color: #888;
-      font-size: 0.85rem;
-    }
-    a { color: #4a7c59; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>曜记 - Obsidian 待办同步 | 隐私政策</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  line-height: 1.8;
+  color: #333;
+  background: #fafafa;
+}
+h1 { font-size: 1.6em; margin-bottom: 0.2em; }
+h2 { font-size: 1.2em; margin-top: 2em; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+p { margin: 0.8em 0; }
+.date { color: #888; font-size: 0.9em; margin-bottom: 2em; }
+ol, ul { padding-left: 1.5em; }
+li { margin: 0.4em 0; }
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Privacy Policy</h1>
-    <p style="font-size:1.05rem; color:#555; margin-bottom:0.2rem;">Yaoji - Obsidian Daily Todo Sync</p>
-    <p class="effective-date">Effective Date: March 12, 2026</p>
 
-    <p>This privacy policy describes how the Yaoji browser extension ("the Extension") handles user data.</p>
+<h1>曜记 - Obsidian 待办同步</h1>
+<p class="date">隐私政策 | 最后更新：2026-03-12</p>
 
-    <h2>1. Overview</h2>
-    <p>Yaoji is a Chrome extension that syncs daily journal todo items between your browser and a locally running Obsidian vault. The Extension communicates with the Obsidian Local REST API plugin on your own computer (127.0.0.1). Your todo data never leaves your local machine through the Extension's core functionality.</p>
+<h2>概述</h2>
+<p>曜记（以下简称"本扩展"）是一款 Chrome 浏览器扩展，用于在浏览器中同步和管理 Obsidian 日记的待办事项。本隐私政策说明本扩展访问哪些数据、如何使用、以及如何保护这些数据。</p>
 
-    <h2>2. Information We Collect</h2>
+<h2>本地存储的数据</h2>
+<p>本扩展使用 Chrome 存储 API（chrome.storage.local）在用户设备上保存以下数据：</p>
+<ul>
+<li>Obsidian API 连接设置（协议选择和 API 密钥）</li>
+<li>笔记文件配置（文件夹路径、文件名格式、章节标题）</li>
+<li>界面偏好（主题、天气城市、自动刷新、背景图场景）</li>
+<li>番茄钟设置和会话状态</li>
+<li>目标墙配置</li>
+<li>灵感捕获偏好</li>
+<li>OCR API 配置（端点地址、模型名称、提示词）</li>
+<li>会员登录令牌（如已登录）</li>
+</ul>
+<p>这些数据不会离开用户设备，除以下情况外。</p>
 
-    <h3>2a. Data stored locally</h3>
-    <p>The Extension stores the following in your browser's local storage (chrome.storage.local):</p>
-    <ul>
-      <li>Configuration settings: Obsidian connection details (protocol, API key), note folder path, date format, UI preferences (theme, auto-refresh), Pomodoro timer settings, weather city name, and feature toggles.</li>
-      <li>Membership session: If you use the optional membership feature, your login session token, device identifier, and membership status are stored locally.</li>
-    </ul>
-    <p>This data never leaves your browser except as described below.</p>
+<h2>与本地 Obsidian 的数据通信</h2>
+<p>本扩展通过 Obsidian Local REST API 插件与运行在用户本地的 Obsidian 应用通信（地址为 127.0.0.1），读写 Obsidian Vault 中的 Markdown 文件。此通信完全在用户的本地网络内进行，不经过互联网。</p>
 
-    <h3>2b. Data sent to external services</h3>
-    <p>The Extension communicates with the following external services:</p>
+<h2>与外部服务的数据通信</h2>
+<p>本扩展向以下外部服务发送网络请求：</p>
+<ol>
+<li><strong>一言 API（v1.hitokoto.cn）</strong><br>获取随机金句显示在新标签页上。仅发送 GET 请求获取金句内容，不传送任何用户数据。</li>
+<li><strong>高德天气 API（restapi.amap.com）</strong><br>使用用户在设置中配置的城市名称查询天气信息。仅传送城市名称，不包含位置数据、IP 地址或其他个人信息。</li>
+<li><strong>Bark 推送 API（api.day.app）</strong><br>用户启用 Bark 推送通知后，番茄钟完成时向 Bark API 发送通知消息。此功能默认关闭，仅在用户主动配置启用后才会调用。</li>
+<li><strong>Supabase</strong><br>用户使用会员功能时，本扩展与 Supabase 后端通信，处理邮箱验证码登录、会员状态查询、激活码兑换和支付订单管理。</li>
+<li><strong>用户配置的 OCR API</strong><br>用户启用图像文字识别功能后，本扩展将图片发送到用户配置的 API 端点。本扩展会在访问自定义 API 域名前征求用户的明确许可。</li>
+</ol>
 
-    <div class="service-item">
-      <p><span class="service-name">1) Obsidian Local REST API</span> (127.0.0.1 ports 27123/27124)</p>
-      <p class="service-detail">Purpose: Read and write daily journal files in your Obsidian vault.<br>
-      Data sent: File read/write requests containing todo text.<br>
-      This is local-only communication on your own machine.</p>
-    </div>
+<h2>从网页访问的数据</h2>
+<p>用户使用内容脚本功能时，本扩展仅在用户明确操作后访问以下页面数据：</p>
+<ul>
+<li>选中文本：用户通过右键菜单或灵感捕获功能时读取。</li>
+<li>页面标题和 URL：用户选择附加来源信息时读取。</li>
+<li>图片 URL：用户通过右键菜单操作图片时获取。</li>
+</ul>
+<p>这些数据仅发送到用户本地的 Obsidian Vault 或用户配置的 OCR API 端点，不会被收集、汇总或传输给任何其他方。</p>
 
-    <div class="service-item">
-      <p><span class="service-name">2) Hitokoto API</span> (v1.hitokoto.cn)</p>
-      <p class="service-detail">Purpose: Fetch a random inspirational quote for the new tab page.<br>
-      Data sent: No user data. Read-only GET request.</p>
-    </div>
+<h2>数据共享</h2>
+<p>本扩展不会出售、交易或将用户数据转让给任何第三方。数据仅与用户本地的 Obsidian 应用（通过本地 API）及上述列出的外部服务（仅在用户主动启用后）共享。</p>
 
-    <div class="service-item">
-      <p><span class="service-name">3) Amap Weather API</span> (restapi.amap.com)</p>
-      <p class="service-detail">Purpose: Display weather information on the new tab page.<br>
-      Data sent: The city name you configured in settings. No personal identifiers.</p>
-    </div>
+<h2>数据安全</h2>
+<ul>
+<li>与本地 Obsidian Vault 的通信通过本地回环地址进行，支持 HTTPS 加密模式。</li>
+<li>API 密钥存储在 Chrome 扩展存储中，不会传输到其目标端点以外的服务器。</li>
+<li>会员系统使用 Supabase 内置的安全机制。</li>
+<li>内容脚本运行在 Shadow DOM 中，与页面脚本隔离。</li>
+</ul>
 
-    <div class="service-item">
-      <p><span class="service-name">4) Bark Push Service</span> (api.day.app)</p>
-      <p class="service-detail">Purpose: Send Pomodoro timer notifications to your mobile device.<br>
-      Data sent: Notification title and body text.<br>
-      Only used if you explicitly enable and configure it in settings.</p>
-    </div>
+<h2>远程代码</h2>
+<p>本扩展不加载或执行任何远程托管的代码。所有 JavaScript 均从扩展包内的文件运行。第三方库均作为本地副本包含在扩展包中。</p>
 
-    <div class="service-item">
-      <p><span class="service-name">5) Supabase Backend</span></p>
-      <p class="service-detail">Purpose: Optional membership system for premium features.<br>
-      Data sent: Email address (for registration/login), device identifier, authentication tokens.<br>
-      Only used if you actively use the membership feature.</p>
-    </div>
+<h2>儿童隐私</h2>
+<p>本扩展不面向 13 岁以下儿童。我们不会故意收集儿童的个人信息。</p>
 
-    <div class="service-item">
-      <p><span class="service-name">6) OpenAI-compatible API</span> (user-configured endpoint)</p>
-      <p class="service-detail">Purpose: Optional OCR image text recognition.<br>
-      Data sent: Image data for text recognition.<br>
-      Only used if you enable OCR and configure your own API endpoint and key in settings.</p>
-    </div>
+<h2>用户选择</h2>
+<ul>
+<li>可在设置页面独立关闭任何外部服务集成。</li>
+<li>可导出、导入或重置所有扩展配置。</li>
+<li>卸载扩展会删除所有本地存储的数据。</li>
+<li>可随时通过 Chrome 扩展设置撤销可选的主机权限。</li>
+</ul>
 
-    <h2>3. How We Use Information</h2>
-    <p>All collected information is used solely to provide the Extension's stated functionality:</p>
-    <ul>
-      <li>Todo synchronization with your local Obsidian vault</li>
-      <li>Weather display on the new tab page</li>
-      <li>Pomodoro timer notifications</li>
-      <li>Optional membership management</li>
-      <li>Optional OCR text recognition</li>
-    </ul>
+<h2>隐私政策变更</h2>
+<p>我们可能会不定期更新本隐私政策。变更将通过更新本页顶部的"最后更新"日期来通知。</p>
 
-    <h2>4. Information Sharing</h2>
-    <p>We do not sell, trade, or transfer your personal information to third parties. Data is only sent to the specific services listed above, each for its stated purpose.</p>
+<h2>联系方式</h2>
+<p>如果您对本隐私政策有疑问，请通过以下方式联系：</p>
+<p>GitHub: <a href="https://github.com/nevertoday">https://github.com/nevertoday</a><br>
+邮箱: [YOUR_EMAIL]</p>
 
-    <h2>5. Data Storage and Security</h2>
-    <ul>
-      <li>Core data (todos, settings) is stored locally in your browser and your Obsidian vault on your own machine.</li>
-      <li>Membership data (if used) is stored in a Supabase-hosted database with standard security practices.</li>
-      <li>API keys and sensitive configuration values are stored in chrome.storage.local and are not accessible to websites you visit.</li>
-      <li>The Extension sanitizes file paths and validates configuration to prevent path traversal and injection attacks.</li>
-    </ul>
-
-    <h2>6. Data Retention</h2>
-    <ul>
-      <li>Local browser storage: Data persists until you uninstall the Extension or clear browser data.</li>
-      <li>Membership data: Retained on the backend while your account is active. Contact us to request deletion.</li>
-    </ul>
-
-    <h2>7. Your Rights and Choices</h2>
-    <ul>
-      <li>You can view and modify all stored settings through the Extension's options page.</li>
-      <li>You can export and import your configuration.</li>
-      <li>You can disable optional features (weather, Bark notifications, inspiration capture, OCR, membership) at any time.</li>
-      <li>You can uninstall the Extension to remove all locally stored data.</li>
-      <li>To delete membership account data, contact us at the email below.</li>
-    </ul>
-
-    <h2>8. Children's Privacy</h2>
-    <p>This Extension is not directed at children under 13. We do not knowingly collect personal information from children.</p>
-
-    <h2>9. Changes to This Policy</h2>
-    <p>We may update this privacy policy from time to time. Changes will be reflected by updating the "Effective Date" at the top of this page. Continued use of the Extension after changes constitutes acceptance.</p>
-
-    <h2>10. Contact Us</h2>
-    <p>If you have questions about this privacy policy, please contact:</p>
-    <p>
-      Email: [YOUR_EMAIL]<br>
-      GitHub: <a href="https://github.com/nevertoday">https://github.com/nevertoday</a>
-    </p>
-
-    <footer>
-      <p>Yaoji - Obsidian Daily Todo Sync &middot; Privacy Policy &middot; Last updated March 12, 2026</p>
-    </footer>
-  </div>
 </body>
 </html>
