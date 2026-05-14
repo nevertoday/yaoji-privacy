@@ -7,99 +7,202 @@
 <style>
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  max-width: 720px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 40px 20px;
   line-height: 1.8;
   color: #333;
   background: #fafafa;
 }
-h1 { font-size: 1.6em; margin-bottom: 0.2em; }
-h2 { font-size: 1.2em; margin-top: 2em; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+h1 { font-size: 1.75em; margin-bottom: 0.2em; }
+h2 { font-size: 1.25em; margin-top: 2em; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+h3 { font-size: 1.05em; margin-top: 1.4em; }
 p { margin: 0.8em 0; }
-.date { color: #888; font-size: 0.9em; margin-bottom: 2em; }
+.date { color: #777; font-size: 0.95em; margin-bottom: 2em; }
 ol, ul { padding-left: 1.5em; }
-li { margin: 0.4em 0; }
+li { margin: 0.45em 0; }
 a { color: #2563eb; text-decoration: none; }
 a:hover { text-decoration: underline; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; background: #fff; }
+th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; vertical-align: top; }
+th { background: #f0f0f0; }
+.note { background: #fff8e6; border: 1px solid #ead7a2; padding: 12px 14px; border-radius: 8px; }
 </style>
 </head>
 <body>
 
 <h1>曜记 - Obsidian 待办同步</h1>
-<p class="date">隐私政策 | 最后更新：2026-03-12</p>
+<p class="date">隐私政策 | 最后更新：2026-05-14</p>
 
-<h2>概述</h2>
-<p>曜记（以下简称"本扩展"）是一款 Chrome 浏览器扩展，用于在浏览器中同步和管理 Obsidian 日记的待办事项。本隐私政策说明本扩展访问哪些数据、如何使用、以及如何保护这些数据。</p>
+<h2>1. 概述</h2>
+<p>曜记（以下简称“本扩展”）是一款 Chrome 浏览器扩展，用于在浏览器中管理 Obsidian 日记待办、灵感摘录、番茄钟、天气提示、OCR 识别和会员功能。本隐私政策说明本扩展如何收集、使用、存储、处理和共享用户数据。</p>
+<p class="note">本扩展的核心设计是本地优先：待办和灵感内容默认保存到用户自己的 Obsidian Vault。本扩展不会出售用户数据，不会用于广告投放，不会将用户数据用于与本扩展核心功能无关的画像、信用、借贷或营销目的。</p>
 
-<h2>本地存储的数据</h2>
-<p>本扩展使用 Chrome 存储 API（chrome.storage.local）在用户设备上保存以下数据：</p>
+<h2>2. 本扩展处理的数据类型（Data Collection）</h2>
+
+<h3>2.1 本地配置和偏好</h3>
+<p>本扩展使用 Chrome 存储 API（chrome.storage.local）在用户设备上保存配置和缓存，包括：</p>
 <ul>
-<li>Obsidian API 连接设置（协议选择和 API 密钥）</li>
-<li>笔记文件配置（文件夹路径、文件名格式、章节标题）</li>
-<li>界面偏好（主题、天气城市、自动刷新、背景图场景）</li>
-<li>番茄钟设置和会话状态</li>
-<li>目标墙配置</li>
-<li>灵感捕获偏好</li>
-<li>OCR API 配置（端点地址、模型名称、提示词）</li>
-<li>会员登录令牌（如已登录）</li>
-</ul>
-<p>这些数据不会离开用户设备，除以下情况外。</p>
-
-<h2>与本地 Obsidian 的数据通信</h2>
-<p>本扩展通过 Obsidian Local REST API 插件与运行在用户本地的 Obsidian 应用通信（地址为 127.0.0.1），读写 Obsidian Vault 中的 Markdown 文件。此通信完全在用户的本地网络内进行，不经过互联网。</p>
-
-<h2>与外部服务的数据通信</h2>
-<p>本扩展向以下外部服务发送网络请求：</p>
-<ol>
-<li><strong>一言 API（v1.hitokoto.cn）</strong><br>获取随机金句显示在新标签页上。仅发送 GET 请求获取金句内容，不传送任何用户数据。</li>
-<li><strong>高德天气 API（restapi.amap.com）</strong><br>使用用户在设置中配置的城市名称查询天气信息。仅传送城市名称，不包含位置数据、IP 地址或其他个人信息。</li>
-<li><strong>Bark 推送 API（api.day.app）</strong><br>用户启用 Bark 推送通知后，番茄钟完成时向 Bark API 发送通知消息。此功能默认关闭，仅在用户主动配置启用后才会调用。</li>
-<li><strong>Supabase</strong><br>用户使用会员功能时，本扩展与 Supabase 后端通信，处理邮箱验证码登录、会员状态查询、激活码兑换和支付订单管理。</li>
-<li><strong>用户配置的 OCR API</strong><br>用户启用图像文字识别功能后，本扩展将图片发送到用户配置的 API 端点。本扩展会在访问自定义 API 域名前征求用户的明确许可。</li>
-</ol>
-
-<h2>从网页访问的数据</h2>
-<p>用户使用内容脚本功能时，本扩展仅在用户明确操作后访问以下页面数据：</p>
-<ul>
-<li>选中文本：用户通过右键菜单或灵感捕获功能时读取。</li>
-<li>页面标题和 URL：用户选择附加来源信息时读取。</li>
-<li>图片 URL：用户通过右键菜单操作图片时获取。</li>
-</ul>
-<p>这些数据仅发送到用户本地的 Obsidian Vault 或用户配置的 OCR API 端点，不会被收集、汇总或传输给任何其他方。</p>
-
-<h2>数据共享</h2>
-<p>本扩展不会出售、交易或将用户数据转让给任何第三方。数据仅与用户本地的 Obsidian 应用（通过本地 API）及上述列出的外部服务（仅在用户主动启用后）共享。</p>
-
-<h2>数据安全</h2>
-<ul>
-<li>与本地 Obsidian Vault 的通信通过本地回环地址进行，支持 HTTPS 加密模式。</li>
-<li>API 密钥存储在 Chrome 扩展存储中，不会传输到其目标端点以外的服务器。</li>
-<li>会员系统使用 Supabase 内置的安全机制。</li>
-<li>内容脚本运行在 Shadow DOM 中，与页面脚本隔离。</li>
+<li>Obsidian Local REST API 连接配置：协议、API 密钥、笔记路径、文件名格式、章节标题。</li>
+<li>界面设置：主题、新标签页开关、自动刷新、背景场景、目标墙、来源附加偏好。</li>
+<li>番茄钟设置：专注/休息时长、会话状态、Bark 推送地址、设备 Key、声音设置、消息模板。</li>
+<li>天气设置和缓存：城市名称、城市 adcode、天气缓存。</li>
+<li>灵感保存设置：保存目录、是否附加来源元数据。</li>
+<li>OCR/AI 设置：API 端点、API 密钥、模型名称、识别提示词、启用状态。</li>
+<li>会员状态缓存：登录会话、访问令牌、刷新令牌、设备 ID、会员状态缓存、最近会员状态。</li>
 </ul>
 
-<h2>远程代码</h2>
-<p>本扩展不加载或执行任何远程托管的代码。所有 JavaScript 均从扩展包内的文件运行。第三方库均作为本地副本包含在扩展包中。</p>
+<h3>2.2 Obsidian Vault 内容</h3>
+<p>为实现待办同步、编辑、打开笔记、保存灵感等功能，本扩展会通过用户本机的 Obsidian Local REST API 读取和写入用户指定的 Markdown 文件。可能处理的数据包括待办文本、完成状态、日记内容、灵感摘录、图片链接、OCR 识别文本、笔记路径和文件名。</p>
 
-<h2>儿童隐私</h2>
-<p>本扩展不面向 13 岁以下儿童。我们不会故意收集儿童的个人信息。</p>
-
-<h2>用户选择</h2>
+<h3>2.3 网页内容和当前标签页信息</h3>
+<p>本扩展仅在用户主动操作时访问网页内容，例如点击右键菜单、快捷添加、保存灵感、OCR 图片识别或切换快速添加面板时。可能处理的数据包括：</p>
 <ul>
-<li>可在设置页面独立关闭任何外部服务集成。</li>
-<li>可导出、导入或重置所有扩展配置。</li>
-<li>卸载扩展会删除所有本地存储的数据。</li>
-<li>可随时通过 Chrome 扩展设置撤销可选的主机权限。</li>
+<li>用户选中的文本。</li>
+<li>用户右键操作的图片 URL，必要时会读取图片数据并转换为 base64 以进行 OCR。</li>
+<li>当前网页的 URL、标题和来源域名，用于生成来源链接。</li>
+<li>用户在快速添加面板中输入的待办内容。</li>
+</ul>
+<p>本扩展不会在后台自动收集完整浏览历史，不会扫描用户访问的所有网页内容。</p>
+
+<h3>2.4 会员、账号和支付相关数据</h3>
+<p>当用户使用会员功能时，本扩展会处理以下数据：邮箱、密码或邮箱验证码、Supabase 登录会话令牌、设备 ID、会员状态、激活码、套餐信息、订单/支付意向、微信支付订单状态、通知设置、通知邮箱和语言区域设置。</p>
+
+<h3>2.5 第三方内容请求</h3>
+<p>当用户启用或使用相关功能时，浏览器可能向远程服务请求金句、天气、二维码图片或背景图片。这些服务可能会按照其自身规则接收请求元数据，例如 IP 地址、User-Agent、请求时间和资源 URL。</p>
+
+<h2>3. 数据使用方式（Data Use and Handling）</h2>
+<p>本扩展只为以下目的使用用户数据：</p>
+<ul>
+<li>连接用户本机 Obsidian，读取和写入指定日记/笔记文件。</li>
+<li>创建、更新、排序、完成和删除待办事项。</li>
+<li>保存选中文本、网页来源、图片链接、OCR 结果等灵感内容到 Obsidian。</li>
+<li>在用户启用 OCR 后，把图片数据发送到用户配置的 OpenAI 兼容 API 端点进行文字识别。</li>
+<li>显示天气、黄历/日期信息、每日金句和背景场景。</li>
+<li>运行番茄钟、浏览器通知和用户主动启用的 Bark 推送。</li>
+<li>处理会员登录、设备绑定、会员状态校验、激活码兑换、套餐展示、支付订单和通知设置。</li>
+<li>保存用户偏好、缓存和会话状态，避免重复配置。</li>
 </ul>
 
-<h2>隐私政策变更</h2>
-<p>我们可能会不定期更新本隐私政策。变更将通过更新本页顶部的"最后更新"日期来通知。</p>
+<h2>4. 数据存储和保留（Data Storage and Retention）</h2>
+<ul>
+<li><strong>Chrome 本地存储：</strong>配置、密钥、缓存和会话保存在用户浏览器的 chrome.storage.local 中，直到用户重置配置、清除扩展数据或卸载扩展。</li>
+<li><strong>Obsidian Vault：</strong>待办、灵感和笔记内容保存在用户自己的 Obsidian Vault 中，保留时间由用户自行管理。</li>
+<li><strong>Supabase 后端：</strong>会员账号、设备 ID、会员状态、激活码兑换、订单/支付状态、通知设置等数据保存在本扩展使用的 Supabase 项目中，用于维持会员服务、支付记录和必要的安全审计。</li>
+<li><strong>第三方服务：</strong>高德、Bark、OCR API、二维码服务、微信支付、Resend、Hitokoto、图片/CDN 服务等可能按各自隐私政策保留请求日志或服务数据。本扩展无法控制第三方服务的保留期限。</li>
+</ul>
 
-<h2>联系方式</h2>
-<p>如果您对本隐私政策有疑问，请通过以下方式联系：</p>
+<h2>5. 数据共享对象（Data Sharing）</h2>
+<p>本扩展不会出售、出租或交易用户数据。用户数据只会在实现功能所必需时与下列对象共享：</p>
+<table>
+<thead>
+<tr>
+<th>共享对象</th>
+<th>共享的数据</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户本机 Obsidian Local REST API（127.0.0.1）</td>
+<td>Obsidian API 密钥、笔记路径、Markdown 文件内容、待办、灵感、OCR 结果</td>
+<td>在用户本机 Obsidian Vault 中同步和保存内容</td>
+</tr>
+<tr>
+<td>Supabase（jsgsryvqzgudojhgmcdi.supabase.co）</td>
+<td>邮箱、密码/验证码登录流程、会话令牌、设备 ID、会员状态、激活码、套餐、订单/支付状态、通知设置</td>
+<td>账号登录、会员校验、设备绑定、激活码兑换、支付订单和会员通知</td>
+</tr>
+<tr>
+<td>微信支付（通过 Supabase Edge Function 调用）</td>
+<td>订单号、套餐、金额、支付状态等支付处理所需数据</td>
+<td>创建、查询或关闭微信支付订单</td>
+</tr>
+<tr>
+<td>Resend 邮件服务（通过 Supabase Edge Function 调用）</td>
+<td>通知邮箱、会员或支付通知内容</td>
+<td>发送会员和支付相关邮件通知（仅在相关功能启用或触发时）</td>
+</tr>
+<tr>
+<td>Bark 推送 API（api.day.app）</td>
+<td>Bark 设备 Key/推送地址、通知标题、通知内容、声音参数</td>
+<td>在用户主动启用 Bark 后发送番茄钟相关推送</td>
+</tr>
+<tr>
+<td>用户配置的 OCR/AI API 端点（例如 OpenAI 兼容端点）</td>
+<td>图片数据、OCR 提示词、模型名称、API 密钥、识别请求和响应</td>
+<td>执行图片文字识别。API 密钥仅发送到用户配置的目标端点</td>
+</tr>
+<tr>
+<td>高德开放平台天气 API（restapi.amap.com）</td>
+<td>用户配置的城市名称、城市 adcode</td>
+<td>查询天气和地理编码信息</td>
+</tr>
+<tr>
+<td>一言 API（v1.hitokoto.cn）</td>
+<td>不发送用户生成内容；服务方可能接收请求元数据</td>
+<td>获取每日金句</td>
+</tr>
+<tr>
+<td>二维码图片服务（api.qrserver.com、quickchart.io）</td>
+<td>微信支付二维码内容或二维码文本，以及请求元数据</td>
+<td>在会员支付流程中渲染支付二维码</td>
+</tr>
+<tr>
+<td>远程图片/CDN 来源（例如 Unsplash、Wikimedia 及其图片 CDN）</td>
+<td>不发送待办或笔记内容；服务方可能接收图片请求元数据</td>
+<td>在用户启用背景场景时加载背景图片</td>
+</tr>
+<tr>
+<td>Chrome 浏览器/扩展 API</td>
+<td>扩展配置、本地缓存、当前标签页标题和 URL、用户主动选择的网页内容</td>
+<td>保存本地设置、显示通知、执行右键菜单、侧边栏、新标签页和快捷添加功能</td>
+</tr>
+</tbody>
+</table>
+
+<h2>6. Chrome 扩展权限说明</h2>
+<ul>
+<li><strong>storage：</strong>保存本地配置、缓存、会话和用户偏好。</li>
+<li><strong>alarms：</strong>驱动番茄钟、提醒和定时刷新。</li>
+<li><strong>contextMenus：</strong>提供右键保存选中文本、图片、OCR 和加入待办等入口。</li>
+<li><strong>sidePanel：</strong>在浏览器侧边栏显示待办管理界面。</li>
+<li><strong>notifications：</strong>显示浏览器通知和番茄钟提醒。</li>
+<li><strong>tabs：</strong>读取当前标签页 URL 和标题，用于保存来源链接和按需注入功能脚本。</li>
+<li><strong>scripting / activeTab：</strong>仅在用户主动操作或功能开启时向当前网页注入快捷添加、灵感捕获和番茄钟浮层脚本。</li>
+<li><strong>主机权限：</strong>访问本机 Obsidian API、Hitokoto、高德天气、Bark、Supabase。可选的 http/https 主机权限用于用户配置的 OCR API 端点和在用户主动操作时读取网页图片数据。</li>
+</ul>
+
+<h2>7. 用户控制和删除方式</h2>
+<ul>
+<li>用户可在扩展设置中关闭天气、Bark、OCR、灵感捕获、新标签页、背景场景等功能。</li>
+<li>用户可修改或清空 Obsidian API Key、OCR API Key、Bark 推送地址等敏感配置。</li>
+<li>用户可导出、导入或重置扩展配置；默认导出会对 API Key 和推送地址脱敏。</li>
+<li>用户可在 Chrome 扩展管理页撤销可选站点权限。</li>
+<li>用户可在 Obsidian Vault 中自行删除待办、灵感和笔记内容。</li>
+<li>卸载扩展会删除 Chrome 扩展本地存储中的数据，但不会自动删除用户 Obsidian Vault 中的文件，也不会自动删除第三方服务或 Supabase 中的账号/会员记录。</li>
+<li>如需删除会员账号或后端会员数据，请通过本政策底部邮箱联系。</li>
+</ul>
+
+<h2>8. 安全措施</h2>
+<ul>
+<li>本地 Obsidian 通信使用 127.0.0.1 回环地址，并支持 HTTPS 模式。</li>
+<li>API 密钥保存在 Chrome 扩展本地存储中，并仅用于请求对应服务端点。</li>
+<li>会员系统使用 Supabase 认证、访问令牌和后端权限规则。</li>
+<li>内容脚本按需注入，并尽量限制在用户主动操作或已启用功能所需范围内。</li>
+<li>本扩展不加载或执行远程托管 JavaScript；扩展运行代码随扩展包一起发布。</li>
+</ul>
+
+<h2>9. 儿童隐私</h2>
+<p>本扩展不面向 13 岁以下儿童。我们不会故意收集 13 岁以下儿童的个人信息。如果你认为我们误收集了儿童信息，请通过下方联系方式联系我们删除。</p>
+
+<h2>10. 隐私政策变更</h2>
+<p>我们可能会根据功能变化或合规要求更新本隐私政策。变更会通过更新本页顶部的“最后更新”日期体现。重大变更会在扩展说明或相关页面中提示。</p>
+
+<h2>11. 联系方式</h2>
+<p>如果你对本隐私政策、数据删除或 Chrome Web Store 隐私披露有疑问，请联系：</p>
 <p>GitHub: <a href="https://github.com/nevertoday">https://github.com/nevertoday</a><br>
-邮箱: yeschenxiang@gmail.com</p>
+邮箱: <a href="mailto:yeschenxiang@gmail.com">yeschenxiang@gmail.com</a></p>
 
 </body>
 </html>
